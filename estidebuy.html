@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		
+	</head>
+	<body>
+		<div id="app">
+			<div>
+				<div class="wrapper" ref="wrapper">
+					<div style="width: 50px;height: 20px;color: #000;" @click.self="sub">提交</div>
+					<div id="href" style="display: none;">
+					</div>
+					<div class="title" style="display: none;">
+					
+					</div>
+					 <div class="el" v-for="tr in image">
+					 	<a v-for="td in tr" 
+					 		style="display: block;float: left;"
+				 		>
+							<img :src="td.src" :name="td.name" alt="" />
+							<input type="text" name="" id="" value="" 
+								style="display: block;width: 50px;"
+							/>
+						</a>
+					 </div>
+				</div>
+				<!--https://sses.tidebuy.com/images/email/es171031-->
+				<table v-if="table" v-for="(tr,index) in image" 
+				 width="650" border="0" align="center" cellpadding="0" cellspacing="0"
+				>
+					<tr>
+						<td :class="'style'+index" :width="td.width" :height="td.height" v-for="(td,tdindex) in tr"
+						:background="'https://sses.tidebuy.com/images/email/es180307/'+td.name"
+						valign="top" align="left"
+						style="background-repeat: no-repeat;"
+						>
+							<a
+								:href="td.getAttribute('h')" 
+								target="_blank" 
+								:title="td.getAttribute('title')" 
+								:style="{display:'block',textDecoration:'none',width:td.width,height:td.height}"
+								v-if="!td.getAttribute('noHref')"
+							>
+							&nbsp;
+							</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+			<input type="file" name="fileUpReviews" value="" multiple="multiple" accept="image/*" ref="upFile1" @change="setImagePreview">
+		</div>
+		<script type="text/javascript" src="https://unpkg.com/vue@2.4.4/dist/vue.js"></script>
+		<script type="text/javascript" src="./jquery-1.11.3.js"></script>
+		<script src="es.js" type="text/javascript" charset="utf-8"></script>
+		
+	</body>
+</html>
